@@ -1,0 +1,4 @@
+Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at com.example.xyz.Service.processRequest(Service.java:123)
+	at com.example.xyz.Main.main(Main.java:45)
+Caused by: Memory leak detected in XYZ caching system.
