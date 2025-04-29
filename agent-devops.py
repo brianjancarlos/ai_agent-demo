@@ -12,8 +12,15 @@ llm = OllamaLLM(model="qwen3:4b")
 
 def process_stream(prompt):
     full_response = []
+    buffer = ""
     for chunk in llm.stream(prompt):
         chunk_text = chunk
+        # Color thinking lines in magenta
+        if "🤔 Thinking:" in chunk_text:
+            chunk_text = f"{Fore.MAGENTA}{chunk_text}{Style.RESET_ALL}"
+        elif "🤔 Planning:" in chunk_text:
+            chunk_text = f"{Fore.MAGENTA}{chunk_text}{Style.RESET_ALL}"
+        
         print(chunk_text, end='', flush=True)
         full_response.append(chunk_text)
     return ''.join(full_response)
@@ -23,6 +30,7 @@ def process_stream(prompt):
 def incident_analyst(logs: str) -> str:
     prompt = f"""
 You are a senior Site Reliability Engineer (SRE).
+Important: Each step of your thought process must be on a new line.
 Show your thought process step by step as you analyze these logs.
 
 For each step, prefix with "🤔 Thinking: " to show your reasoning.
@@ -47,6 +55,7 @@ Structure the final analysis in bullet points.
 def runbook_writer(analysis: str) -> str:
     prompt = f"""
 You are a technical writer.
+Important: Each planning step must be on a new line.
 Show your thought process as you create this runbook.
 
 For each section you plan, prefix with "🤔 Planning: " to show your reasoning.
