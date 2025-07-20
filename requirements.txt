@@ -1,0 +1,5 @@
+langchain-ollama
+colorama
+duckduckgo-search
+tqdm
+langchain_community
