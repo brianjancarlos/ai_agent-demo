@@ -1,5 +1,7 @@
 # AI Agent Demo
 
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+
 A collection of AI agents for research and DevOps automation tasks.
 
 ## Features
@@ -49,3 +51,7 @@ python agent-devops.py
 
 - Python 3.8+
 - Ollama with LLM models installed
+
+## Documentation
+
+For more detailed documentation, please see the `docs` directory.
